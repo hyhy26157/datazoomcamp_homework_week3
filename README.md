@@ -17,11 +17,11 @@ What is the count for fhv vehicle records for year 2019?
 - 13,942,414
 
 
-BQ Query
-SELECT count(dispatching_base_num) FROM '<dataset>.<external table>'
+## BQ Query code
+- SELECT count(dispatching_base_num) FROM '<dataset>.<external table>'
 
-Q1 Answers
-43244696
+## Q1 Answers
+- 43244696
 
 
 
@@ -35,12 +35,12 @@ What is the estimated amount of data that will be read when this query is execut
 - 0 MB for the External Table and 317.94MB for the BQ Table 
 
 
-BQ Shell Code
-(code to get external table estimated mb)bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<external table>'
-(code to get BQ table estimated mb)bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<native table>'
+## BQ Shell Code
+- (code to get external table estimated mb)bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<external table>'
+- (code to get BQ table estimated mb)bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<native table>'
 
 
-Q2 Answers
+## Q2 Answers
 - 0 MB for the External Table and 317.94MB for the BQ Table 
 
 
@@ -51,11 +51,11 @@ How many records have both a blank (null) PUlocationID and DOlocationID in the e
 - 5
 - 20,332
 
-BQ Query
-SELECT (COUNTIF((PUlocationID IS NULL) and (DOlocationID IS NULL)))  AS num_null FROM `<dataset>.<external table>`;
+## BQ Query
+- SELECT (COUNTIF((PUlocationID IS NULL) and (DOlocationID IS NULL)))  AS num_null FROM `<dataset>.<external table>`;
 
-Q3 Answers
--717748
+## Q3 Answers
+- 717748
 
 
 ## Question 4:
@@ -66,7 +66,7 @@ What is the best strategy to optimize the table if query always filter by pickup
 - Partition by affiliated_base_number Cluster on pickup_datetime
 
 
-Q4 Answers
+## Q4 Answers
 - Partition by pickup_datetime Cluster on affiliated_base_number
 
 
@@ -80,15 +80,15 @@ Use the BQ table you created earlier in your from clause and note the estimated 
 
 
 
-BQ Shell Code
+## BQ Shell Code
 
-(code to get BQ table estimated mb)
-bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<native table>'
+- (code to get BQ table estimated mb)
+- bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<native table>'
 
-(code to get BQ table that is partitioned by pickup_datetime column and clustered by affiliated_base_number column estimated mb)
-bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<native table_partitioned_clustered>'
+- (code to get BQ table that is partitioned by pickup_datetime column and clustered by affiliated_base_number column estimated mb)
+- bq query --use_legacy_sql=false --dry_run "SELECT COUNT(DISTINCT affiliated_base_number) FROM '<dataset>.<native table_partitioned_clustered>'
 
-Q5 Answers
+## Q5 Answers
 - 647.87 MB for non-partitioned table and 23.06 MB for the partitioned table
 
 
@@ -101,8 +101,8 @@ Where is the data stored in the External Table you created?
 - Big Table
 
 
-Q6 Answers
--GCP bucket
+## Q6 Answers
+- GCP bucket
 
 
 ## Question 7:
@@ -110,5 +110,5 @@ It is best practice in Big Query to always cluster your data:
 - True
 - False
 
-Q7 Answers
--False. It is not useful if the data has too many granular detail.
+## Q7 Answers
+- False. It is not useful if the data has too many granular detail.
